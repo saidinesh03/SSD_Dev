@@ -1,0 +1,7 @@
+<aura:component controller="ContactsTodayController">
+	<lightning:input label="Enter First Name" aura:id="fName" type="text"/>
+    <lightning:input label="Enter Last Name" aura:id="lName" type="text"/>
+    <lightning:input label="Enter eMail" aura:id="email" type="email"/>
+    <aura:handler name="accEve" event="c:Accoun_Create_Evt" action="{!c.creatCone}"/>
+    <c:Account_Create_Cmp/>
+</aura:component>

@@ -1,0 +1,26 @@
+<apex:page controller="Assignment3">
+  <apex:form >  
+  <apex:pageblock >
+  <apex:pageBlockSection >
+  <apex:selectList value="{!objName}" label="Select an Object" size="1">
+  <apex:actionSupport event="onchange" action="{!rend}"/>
+  <apex:selectOptions value="{!selOptns}" >
+  </apex:selectOptions>
+  </apex:selectList>
+  </apex:pageBlockSection>
+  </apex:pageblock>
+  <apex:pageblock rendered="{!pbrend}">
+   <b>Do u want SOQL on the selected Object? </b>
+   <apex:selectRadio value="{!querySel}">
+  <apex:selectOptions value="{!objList}" ></apex:selectOptions>
+    </apex:selectRadio>
+    <b>Enter the name to get ID</b><br/>
+    <apex:inputText value="{!SearchString}">
+    <apex:actionsupport event="onkeypress" action="{!RetrieveDetails}" rerender="pbtab" />
+    </apex:inputtext>
+    <apex:pageBlockTable value="{!objDetails}" var="od" id="pbtab">
+    <apex:column value="{!od['id']}"/>    
+    </apex:pageBlockTable>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

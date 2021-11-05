@@ -1,0 +1,5 @@
+<aura:component >
+	<lightning:input label="Enter First Name" aura:id="fname" type="text"/>
+    <lightning:input label="Enter Last Name" aura:id="lname" type="text"/>
+    <lightning:input label="Enter eMail" aura:id="email" type="email"/>
+</aura:component>

@@ -1,0 +1,12 @@
+<apex:page controller="firstcustomcontroller">
+<apex:form >
+<apex:pageblock >
+<apex:pageblocktable value="{!acclist}" var="a">
+<apex:column value="{!a.name}"/>
+</apex:pageblocktable>
+<apex:pageblockbuttons >
+<apex:commandButton value="New" action="{!neww}"/>
+</apex:pageblockbuttons>
+</apex:pageblock>  
+</apex:form>
+</apex:page>

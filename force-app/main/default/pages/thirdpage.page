@@ -1,0 +1,12 @@
+<apex:page controller="thirdcustomcontroller">
+<apex:form >
+<apex:pageblock >
+<apex:pageblockSection >
+<apex:outputField value="{!a.name}"/>
+</apex:pageblockSection>
+<apex:pageblockButtons >
+<apex:commandButton value="edit" action="{!edit}"/>
+</apex:pageblockButtons>
+</apex:pageblock>
+</apex:form>
+</apex:page>

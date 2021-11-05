@@ -1,0 +1,16 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
+    <aura:attribute name="anime" type="String" required="true"/>
+    <aura:attribute name="episode" type="Integer" required="true"/>
+    <aura:attribute name="language" type="String" required="true" default="Sub"/>
+    <aura:attribute name="watched" type="Boolean" required="true"/>
+    <aura:attribute name="rate" type="Integer"/>
+    
+    {!$Label.c.name1} : {!v.anime} <br/>
+    Episodes: {!v.episode} <br/>
+    Sub/Dub: {!v.language} <br/>
+    Watched?: {!v.watched} <br/>
+    Rating: {!v.rate} <br/>
+    
+    <!--<c:Konnichiwa compp="{!v.anime}" male_prot="{Naruto, Sasuke, Luffy}" female_prot="{Hinata, Sakura, Hancock}"/>-->
+    
+</aura:component>

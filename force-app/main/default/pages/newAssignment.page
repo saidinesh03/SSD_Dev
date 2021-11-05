@@ -1,0 +1,28 @@
+<apex:page controller="NewAssignment">
+<apex:form >
+<apex:pageblock >
+<apex:pageBlockSection title="Select Status">
+<apex:selectList value="{!PickLists}" label="Status : " size="1" id="pick">
+<apex:selectOptions value="{!PickListValues}"></apex:selectOptions>
+</apex:selectList>
+</apex:pageBlockSection>
+<apex:pageBlockButtons location="bottom" >
+<apex:commandButton value="Search" action="{!Searching}"/>
+</apex:pageBlockButtons>
+</apex:pageblock>
+</apex:form>
+<apex:pageblock rendered="{!hidevalue}">
+<apex:pageBlockSection title="Details" >
+<apex:pageBlockTable value="{!Stu}" var="s" >
+<apex:column value="{!s.name}"/>
+<apex:column value="{!s.Contact_Number__c}"/>
+<apex:column value="{!s.Email_ID__c}"/>
+<apex:column value="{!s.Date_of_Birth__c}"/>
+<apex:column value="{!s.Status__c}"/>
+</apex:pageBlockTable>
+</apex:pageBlockSection>
+</apex:pageblock>
+<apex:pageBlock rendered="{!If(hidevalue == true, false, true)}">
+<apex:pageMessage severity="Error" detail="Select a Value"></apex:pageMessage>
+</apex:pageblock>
+</apex:page>

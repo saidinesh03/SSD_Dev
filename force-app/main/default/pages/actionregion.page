@@ -1,0 +1,22 @@
+<apex:page >
+    <apex:form >
+    <apex:pageBlock title="Action Region Sample">
+        <apex:pageBlockSection title="Current Time">
+        <apex:actionRegion >
+            <apex:outputLabel value="Refresh the current time" style="color:red" >
+                <apex:actionSupport event="onclick" reRender="pbid"/>
+             </apex:outputLabel>
+            </apex:actionRegion>
+             <apex:outputLabel value="Refresh the current time" style="color:blue" >
+                <apex:actionSupport event="onclick" reRender="pbid1"/>
+             </apex:outputLabel>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+     <apex:pageBlock id="pbid" title="Current Time">
+            <apex:outputText value="{!text(now())}"/>
+        </apex:pageBlock>
+        <apex:pageBlock id="pbid1" title="Current Time">
+            <apex:outputText value="{!text(now())}"/>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,6 @@
+<apex:component controller="LoginComponentController">
+Username : <apex:inputText label="Username" value="{!userName}" title="Enter Ur Email"/><br/>
+Password : <apex:inputSecret label="Password" title="Enter Password" value="{!password}"/><br/>
+<apex:commandButton value="Submit" action="{!LoginMethod}"/>
+<apex:pagemessages ></apex:pagemessages>
+</apex:component>

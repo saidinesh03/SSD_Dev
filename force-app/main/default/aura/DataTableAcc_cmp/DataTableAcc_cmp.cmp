@@ -1,0 +1,16 @@
+<aura:component controller="AccountExtension">
+    <div class="box">
+    <lightning:input label="Owner Alias" type="text" aura:id="own"/>
+    <lightning:input label="Type" type="text" aura:id="type"/>
+    <lightning:button label="Search" onclick="{!c.findAcc}"/>
+    <lightning:button label="Reset" type="reset"/>
+    </div>
+    
+    <div class="box1">
+    <lightning:dataTable data="{!v.AccDetails}" columns="{!v.fields}"
+                         keyField="Id"/>
+    </div>
+    <aura:attribute type="Object" name="AccDetails"/>
+    <aura:attribute type="List" name="fields"/>
+    
+</aura:component>

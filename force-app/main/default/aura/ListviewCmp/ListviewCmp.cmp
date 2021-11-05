@@ -1,0 +1,10 @@
+<aura:component controller="AccountExtension">
+    <lightning:input type="number" label="Enter size to retrieve" aura:id="size"/>
+    <lightning:button label ="Search" onclick="{!c.retrieve}"/>
+    <aura:attribute name="mydata" type="Object"/>
+    <aura:attribute name="mycolumns" type="List"/>
+    <lightning:datatable data="{!v.listviewAccounts}"
+        	columns="{!v.mycolumns}"
+        	keyField="Id"/>
+    <!--<aura:handler name="init" value="{!this}" action="{!c.retrieve}"/>-->
+</aura:component>

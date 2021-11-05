@@ -1,0 +1,11 @@
+<template>
+    <lightning-card>
+        <lightning-record-edit-form record-id={recordId} object-api-name="Account" onsuccess={handleSuccess}
+            onsubmit={handleSubmit} onerror={handleError}>
+            <lightning-layout>
+                <lightning-layout-item><lightning-input-field data-my-id="startDate" variant="label-stacked" field-name="Start_Date__c" onchange={handleStartDateChange} required></lightning-input-field></lightning-layout-item>
+                <lightning-layout-item><lightning-input-field data-my-id="complianceDate" variant="label-stacked" field-name="Compliance_Date__c" required disabled value={complianceDate}></lightning-input-field></lightning-layout-item>
+            </lightning-layout>
+        </lightning-record-edit-form>
+    </lightning-card>    
+</template>

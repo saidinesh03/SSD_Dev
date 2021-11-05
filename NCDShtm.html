@@ -1,0 +1,256 @@
+<template>
+    <lightning-card>
+        <lightning-record-edit-form record-id={recordId} object-api-name="Case" onsuccess={handleSuccess}
+            onsubmit={handleSubmit} onerror={handleError}>
+            <template if:true={checkSpin}>
+                <div class="spinner">
+                    <lightning-spinner variant="brand" alternative-text="Creating the case" size="medium">
+                    </lightning-spinner>
+                </div>
+            </template>
+            <lightning-layout multiple-rows>
+
+                <!-- Case Information section -->
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="12"
+                    padding="">
+                    <div class="slds-section slds-is-open">
+                        <h3 class="slds-section__title slds-theme_shade">
+                            <span class="slds-truncate slds-p-horizontal_small" title="Section Title">Case
+                                Information</span>
+                        </h3>
+                    </div>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+                    padding="horizontal-small">
+                    <lightning-input-field data-my-id="stateCase" variant="label-stacked" field-name="NCDS_State_Case__c" required></lightning-input-field><!--value={guestId} onchange={handleContactChange} required-->
+                    <lightning-input-field data-my-id="startDate" variant="label-stacked" field-name="Start_Date__c" onchange={startDateTrack} required></lightning-input-field>
+                    <lightning-input-field data-my-id="ineligibleCode" variant="label-stacked" field-name="InElgible_Code__c" disabled></lightning-input-field>
+                    <lightning-input-field data-my-id="guestName" variant="label-stacked" field-name="Customer_Name__c"
+                        value={guestId} onchange={handleContactChange} required>
+                    </lightning-input-field>
+                    <lightning-input-field variant="label-stacked" data-my-id="filingState" value={filingstate} field-name="Filing_State__c"
+                        required>
+                    </lightning-input-field>
+										<!-- NCDS Integration Info-->
+                    <lightning-output-field variant="label-stacked" data-my-id="ncdsStaging" value={ncdsStaging} field-name="NCDS_Staging__c">
+                    </lightning-output-field>
+                    <lightning-input-field class="slds-hide" data-my-id="Type" variant="label-stacked"
+                        field-name="Type">
+                    </lightning-input-field>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+                    padding="horizontal-small">
+
+                    <p class="requiredStyle slds-p-top_xx-large" style="padding:6px;"><span
+                            class="redColor">*</span>Created Date</p>
+                    <lightning-formatted-date-time value={createdDate} style="padding:5px" year="numeric"
+                        month="numeric" day="numeric" hour="2-digit" minute="2-digit" time-zone={userTime}
+                        hour12="true">
+                    </lightning-formatted-date-time>
+                    <div class="slds-p-top_medium">
+                        <lightning-input-field data-my-id="status" variant="label-stacked" field-name="Status"
+                            onchange={handleStatus} disabled required>
+                        </lightning-input-field>
+                    </div>
+                    <lightning-input-field data-my-id="complianceDate" variant="label-stacked" field-name="MRF_Compliance_Date__c"></lightning-input-field>
+                    <lightning-input-field variant="label-stacked" data-my-id="hearingDate"  field-name="Hearing_Date__c" disabled>
+                    </lightning-input-field>
+                    <lightning-input-field variant="label-stacked" data-my-id="hearingDate"  field-name="Callback_Timezone__c" disabled>
+                    </lightning-input-field>
+                    <lightning-input-field variant="label-stacked" data-my-id="hearingType"  field-name="Hearing_Type__c" disabled>
+                    </lightning-input-field>
+                   <!-- <lightning-input-field data-my-id="subType" variant="label-stacked" field-name="Sub_Type__c"
+                        onchange={handleSubType} required>
+                    </lightning-input-field>-->
+                    <template if:true={showReturnedReason}>
+                        <lightning-input-field data-my-id="returnedReason" variant="label-stacked"
+                            field-name="Returned_Reason__c" required>
+                        </lightning-input-field>
+                    </template>
+                    <template if:true={showClosedReason}>
+                        <lightning-input-field data-my-id="closedReason" variant="label-stacked"
+                            field-name="Closed_Reason__c" required>
+                        </lightning-input-field>
+                    </template>
+
+                </lightning-layout-item>
+
+
+                <!-- Contact Information section -->
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="12"
+                    padding="">
+                    <div class="slds-section slds-is-open">
+                        <h3 class="slds-section__title slds-theme_shade">
+                            <span class="slds-truncate slds-p-horizontal_small" title="Section Title">Contact
+                                Information</span>
+                        </h3>
+                    </div>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+                    padding="horizontal-small">
+                    <lightning-input-field data-my-id="contactName" variant="label-stacked" field-name="ContactId"
+                        value={conId} required>
+                    </lightning-input-field>
+                </lightning-layout-item>
+
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+                    padding="horizontal-small">
+                    <lightning-input-field data-my-id="contactType" variant="label-stacked" value={conType}
+                        onchange={firmname} field-name="Relationship__c" required>
+                    </lightning-input-field>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+                    padding="horizontal-small">
+                    <lightning-input-field data-my-id="initialChannel" variant="label-stacked" field-name="Origin"
+                        required>
+                    </lightning-input-field>
+                </lightning-layout-item>
+
+                <template if:true={showFirm}>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+                        padding="horizontal-small">
+                        <lightning-input-field data-my-id="nameOfFirm" variant="label-stacked"
+                            field-name="Name_of_Firm__c" required>
+                        </lightning-input-field>
+                    </lightning-layout-item>
+                </template>
+                <!-- Vehicle Information section -->
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="12"
+                    padding="">
+                    <div class="slds-section slds-is-open">
+                        <h3 class="slds-section__title slds-theme_shade">
+                            <span class="slds-truncate slds-p-horizontal_small" title="Section Title">Vehicle
+                                Information</span>
+                        </h3>
+                    </div>
+                </lightning-layout-item>
+                <!--div class="slds-grid slds-wrap"-->
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+                padding="horizontal-small">
+                <p class="requiredStyle slds-p-top_medium" style="padding:6px;"><span
+                    class="redColor">*</span> Vehicle</p>
+                <!--div style="border-color:red"-->
+                <lightning-combobox data-my-id="vehicleCombobox" name="VIN" variant="label-hidden" class={redBorderOnCombobox}
+                    value={vehicleAssociationId} placeholder={vehicleAssociationName} options={vehicleList}
+                    onchange={handleVAChange} label-stacked required message-when-value-missing='Please provide Vehicle.'>
+                </lightning-combobox>
+                <lightning-input-field data-my-id="currentMileage" field-name="Current_Mileage__c" variant="label-stacked"
+                    onchange={handleLimitCurMilegae}></lightning-input-field>
+                <!--lightning-input data-my-id="currentMileage" type="string" label = "Current Mileage" value={cuMil} onchange={handleLimitCurMilegae}></lightning-input-->
+                <div if:true={checkCurrentMileage}>
+                    <p class="validMsgStyle">
+                        <lightning-formatted-text value="Enter ten digits only."></lightning-formatted-text>
+                    </p>
+                </div>
+                <lightning-input-field field-name="Vehicle_Association__c" value={vehicleAssociationId}
+                    class="slds-hide"></lightning-input-field>
+                <lightning-input-field field-name="Make__c" value={finalMake} class="slds-hide">
+                </lightning-input-field>
+                <lightning-input-field field-name="ModelForDR__c" value={finalModel} class="slds-hide">
+                </lightning-input-field>
+                <lightning-input-field field-name="Model_Year__c" value={finalModelYear} class="slds-hide">
+                </lightning-input-field>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+                padding="horizontal-small">
+                <lightning-input variant="label-stacked" disabled label="Make" value={make}>
+                </lightning-input>
+                <lightning-input variant="label-stacked" disabled label="Model" value={model}>
+                </lightning-input>
+                <lightning-input variant="label-stacked" disabled label="Year" value={year}>
+                </lightning-input>
+            </lightning-layout-item>
+
+                <!--/div-->
+
+
+                <!-- Dealer Information section -->
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="12"
+                    padding="">
+                    <div class="slds-section slds-is-open">
+                        <h3 class="slds-section__title slds-theme_shade">
+                            <span class="slds-truncate slds-p-horizontal_small" title="Section Title">Dealer
+                                Information</span>
+                        </h3>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+                    padding="horizontal-small">
+                    <lightning-input-field data-my-id="region" field-name="Region1__c" variant="label-stacked" onchange={handleRegionChange} required>
+                    </lightning-input-field>
+                    <lightning-input-field data-my-id="dealer1" field-name="Dealer_1__c" variant="label-stacked"
+                        onchange={handleDealer1Change}>
+                    </lightning-input-field>
+                    <lightning-input label="Field" variant="label-stacked" value={region} disabled>
+                    </lightning-input>
+                    <lightning-input label="District" variant="label-stacked" value={district} disabled>
+                    </lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+                    padding="horizontal-small">
+                    <lightning-input-field type="url" data-my-id="regionArea" field-name="Reg_Area__c" variant="label-stacked"
+                        value={regionAreaUserId} required>
+                    </lightning-input-field>
+                    <lightning-input-field data-my-id="dealer2" field-name="Dealer_2__c" variant="label-stacked">
+                    </lightning-input-field>
+                    <lightning-input-field data-my-id="dealer3" field-name="Dealer3__c" variant="label-stacked">
+                    </lightning-input-field>
+                </lightning-layout-item>
+            <!--Guest Resolution Sought-->
+            <!--<template if:false={showPR4}>-->
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="12"
+                padding="">
+                <div class="slds-section slds-is-open">
+                    <h3 class="slds-section__title slds-theme_shade">
+                        <span class="slds-truncate slds-p-horizontal_small" title="Section Title">Guest Resolution Sought</span>
+                    </h3>
+                </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+                        padding="horizontal-small">
+                    <lightning-input-field data-my-id="guestResolution" field-name="Guest_Resolution_Sought__c" variant="label-stacked"
+                                onchange={handleGuestResolutionChange} >
+                    </lightning-input-field>
+                </lightning-layout-item>
+                <template if:true={showOtherResolution}>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+                        padding="horizontal-small">
+                        <lightning-input-field data-my-id="otherResolution" field-name="Other_Resolution_Sought__c" variant="label-stacked"
+                                    required={showOtherResolution}>
+                        </lightning-input-field>
+                    </lightning-layout-item>
+                </template>    
+            <!--</template>-->
+            <!-- PR4 Warranty Eligibility section : Start-->
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="12" padding="">
+                <div class="slds-section slds-is-open">
+                    <h3 class="slds-section__title slds-theme_shade">
+                        <span class="slds-truncate slds-p-horizontal_small" title="Section Title">Warranty Eligibility</span>
+                    </h3>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="horizontal-small">
+                <lightning-input-field field-name="Warranty_Eligibility__c" disabled variant="label-stacked"></lightning-input-field>
+                <lightning-input-field field-name="TMS_Effective_Date__c" disabled variant="label-stacked"></lightning-input-field>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="horizontal-small">
+                <lightning-input-field field-name="Override_Warranty_Eligibility__c" variant="label-stacked"></lightning-input-field>
+            </lightning-layout-item>
+            <!-- PR4 Warranty Eligibility section : End -->
+        </lightning-layout>
+            <footer class="slds-modal__footer">
+                <div class="slds-col_bump-left slds-text-align_right slds-p-horizontal_x-small slds-text-align_center">
+                    <lightning-button variant="brand" label="Save" title="Save" onclick={handleSave}
+                        class="slds-m-left_x-small slds-p-right_xx-small">
+                    </lightning-button>
+                </div>
+            </footer>
+        </lightning-record-edit-form>
+    </lightning-card>
+</template>

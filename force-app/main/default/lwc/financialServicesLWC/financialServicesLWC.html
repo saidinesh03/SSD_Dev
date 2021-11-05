@@ -1,0 +1,8 @@
+<template>
+    <lightning-card title="Financial Services Account Listing">
+        <lightning-layout  class="slds-m-around_small" multiple-rows="true">
+            <lightning-datatable data={AccList} key-field="Id" columns={columns} class="table" sorted-by={sortby} sorted-direction={direction} default-sort-direction={def} draft-values={draftValues} onsort={sortHandler}>
+            </lightning-datatable>
+        </lightning-layout>
+    </lightning-card>
+</template>

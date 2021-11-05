@@ -1,0 +1,14 @@
+<apex:page controller="Students" extensions="StudentsExtensions,StudentExtension">
+<apex:form >
+<apex:pageblock >
+<apex:pageBlockSection >
+<apex:pageblockTable title="Details" value="{!st}" var="s">
+<apex:column value="{!s.name}"/>
+<apex:column headervalue="Links">
+<apex:commandLink value="{!s.Name}" action="/apex/Hey?id={!s.id}"/>
+</apex:column>
+</apex:pageBlockTable>
+</apex:pageBlockSection>
+</apex:pageblock>
+</apex:form>
+</apex:page>

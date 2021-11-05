@@ -1,0 +1,9 @@
+<template>
+    <lightning-card>
+        <lightning-record-edit-form record-id={recordId} object-api-name="Case" onsuccess={handleSuccess}
+            onsubmit={handleSubmit} onerror={handleError}>
+            <lightning-input-field data-my-id="complianceDate" variant="label-stacked" field-name="Start_Date__c" onchange={startDateTrack} required></lightning-input-field>
+            <lightning-input-field data-my-id="complianceDate" variant="label-stacked" field-name="Compliance_Date__c" required disabled value={complianceDate}></lightning-input-field>
+        </lightning-record-edit-form>
+    </lightning-card>
+</template>

@@ -1,0 +1,11 @@
+<apex:page standardController="Account" extensions="AccountExtension">
+<h1>Thank You</h1><br/>
+<h3>Account : 
+ <apex:outputField value="{!account.name}"/> 
+  has been updated.</h3>
+  <style>
+  h1,h3{
+  color : "green" ;
+  }
+  </style>
+</apex:page>

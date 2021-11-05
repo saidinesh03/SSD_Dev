@@ -1,0 +1,36 @@
+<aura:component >
+
+    <aura:attribute name="mess" type="List"
+        default="['You look nice today.',
+            'Great weather we\'re having.']"/>
+
+
+    <h1>Konnichiwa Playground</h1>
+
+    <p>Silly fun with attributes and expressions.</p>
+
+
+    <h2>List Items</h2>
+
+    <p><c:MessagesHelloo message="{!v.mess[0]}"/></p>
+    <p><c:MessagesHelloo message="{!v.mess[1]}"/></p>
+    <p><c:MessagesHelloo message="{!v.mess[2]}"/></p>
+
+
+    <h2>List Iteration</h2>
+
+    <aura:iteration items="{!v.mess}" var="msg">
+        <p><c:MessagesHelloo message="{!msg}"/></p>
+    </aura:iteration>
+
+
+    <h2>Conditional Expressions and Global Value Providers</h2>
+
+    <aura:if isTrue="{!$Browser.isIPhone}">
+        <p><c:MessagesHelloo message="{!v.mess[0]}"/></p>
+    <aura:set attribute="else">
+        <p><c:MessagesHelloo message="{!v.mess[1]}"/></p>
+        </aura:set>
+    </aura:if>
+
+</aura:component>

@@ -1,0 +1,26 @@
+<apex:page controller="WrapClassController">
+<apex:form >
+<apex:pageBlock >
+<apex:messages />
+<apex:selectList value="{!objName}" label="Select an Object" size="1" title="Select an object to view records">
+<apex:actionSupport event="onchange" action="{!rend}"/>
+<apex:selectOptions value="{!selOptns}" >
+</apex:selectOptions>
+</apex:selectList>
+<apex:pageblockTable var="objvar" value="{!objectData}" rendered="{!tbrend}">
+<apex:column headerValue="Select">
+<apex:inputcheckbox value="{!Selectedrecs}"/>
+</apex:column>
+<apex:column value="{!objvar['id']}"/>
+<apex:column value="{!objvar['Name']}"/>
+</apex:pageblockTable>
+<apex:pageBlockButtons >
+<apex:commandButton value="Hide" action="{!selectprocess}" rendered="{!tbrend}"/>
+</apex:pageBlockButtons>
+<apex:pageblockTable var="objvar" value="{!selobjectData}">
+<apex:column value="{!objvar['id']}"/>
+<apex:column value="{!objvar['Name']}"/>
+</apex:pageblockTable>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

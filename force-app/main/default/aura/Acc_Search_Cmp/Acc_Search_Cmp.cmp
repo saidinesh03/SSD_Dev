@@ -1,0 +1,10 @@
+<aura:component >
+    <lightning:input label="Account Name" type="String" aura:id="AccName"/>
+    <lightning:button label="Search" onclick="{!c.SearchRecs}"/>
+    
+    <aura:registerEvent name="searchevent" type="c:Acc_Search_Event"/>
+    <br/>
+    <c:Acc_Search_Cmp2/><br/>
+    <c:Acc_Search_Cmp3/><br/>
+    <c:Acc_Search_Cmp4/><br/>
+</aura:component>

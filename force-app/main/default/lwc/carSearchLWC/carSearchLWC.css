@@ -1,0 +1,17 @@
+.cars{
+    max-width: 600pt;
+    background-color: rgb(252, 237, 216);
+    overflow-y: scroll;
+    margin: 2ch;
+}
+.cell{
+    width: fit-content;
+    border: burlywood;
+}
+.search{
+    max-width: 600pt;;
+}
+.table{
+    max-height: 400pt;
+    overflow-y: scroll;
+}

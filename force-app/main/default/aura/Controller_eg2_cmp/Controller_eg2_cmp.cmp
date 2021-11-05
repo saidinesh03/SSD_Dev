@@ -1,0 +1,14 @@
+<aura:component >
+    <aura:attribute type="double" name="total_amt"/>
+    <aura:attribute type="double" name="rate"/>
+    <aura:attribute type="integer" name="years"/>
+    <aura:attribute type="double" name="intrest"/>
+    
+    Amount : {!v.total_amt}<br/>
+    Rate of I: {!v.rate}<br/>
+    Term: {!v.years}<br/>
+    Total Interest : {!v.intrest}<br/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.Calc}"/>
+
+</aura:component>

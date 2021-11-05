@@ -1,0 +1,22 @@
+<apex:page controller="Assignment2">
+  <apex:form >  
+  <apex:pageblock >
+  <apex:pageBlockSection >
+  <apex:selectList value="{!objName}" label="Select an Object" size="1">
+  <apex:actionSupport event="onchange" action="{!retrieveObjData}" rerender="dataTable"/>
+  <apex:selectOptions value="{!selOptns}" >
+  </apex:selectOptions>
+  </apex:selectList> 
+  </apex:pageBlockSection>
+  </apex:pageBlock>
+  <apex:pageBlock >
+  <apex:pageBlockTable value="{!objdetails}" var="ods" id="dataTable"> 
+  <apex:column value="{!ods['id']}" />
+  <apex:column value="{!ods['name']}" />
+  <apex:column value="{!ods['LastModifiedById']}"/>
+  <apex:column value="{!ods['createdById']}"/>
+  <apex:column value="{!ods['OwnerId']}"/>
+  </apex:pageblockTable>
+  </apex:pageblock>
+  </apex:form>
+</apex:page>

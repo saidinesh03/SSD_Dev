@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT" description="Event template">
+<aura:attribute name="message" type="String" default="Hello World!!" />
+<aura:attribute name="show" type="String" default="Yo-Sup!!"/>
+</aura:event>

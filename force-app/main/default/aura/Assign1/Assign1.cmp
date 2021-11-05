@@ -1,0 +1,11 @@
+<aura:component controller="apexInput">
+    <aura:attribute name="accountData" type="SObject[]"/>
+    <!--<aura:attribute name="accountData1" type="String"/>-->
+        <ui:inputText label="Object Name" value="{!v.accountData[0]}"/>
+    <ui:button label="Submit" press="{!c.Fetching}"/>
+    <p>
+        <aura:iteration items="{!v.accountData}" var="acc">
+        <ui:outputText value="{!acc.Name}"/>
+         </aura:iteration>
+    </p>
+</aura:component>

@@ -1,0 +1,14 @@
+<apex:page Controller="Pagination">
+  <apex:pageBlock >
+  <apex:form id="theForm">
+    <apex:pageBlockSection >
+    <apex:inputText value="{!limitval}" title="Enter a value to show the number of records per page" label="No of Records per page"/><br/>
+      <apex:pageblocktable var="od" value="{!objData}" rendered="{!pbsrend}">
+      <apex:column value="{!od['Name']}"/>      
+      </apex:pageblocktable>
+      </apex:pageBlockSection>
+      <apex:commandButton action="{!previous}" value="< Previous" rendered="{!pvsrend}"/>
+      <apex:commandButton action="{!next}" value="Next >" rendered= "{!nxtrend}"/>
+  </apex:form>
+  </apex:pageBlock>
+</apex:page>

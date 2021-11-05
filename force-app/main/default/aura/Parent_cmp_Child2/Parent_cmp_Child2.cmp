@@ -1,0 +1,5 @@
+<aura:component >
+    <lightning:input label="Enter Name" type="text" aura:id="names"/>
+    <lightning:button label="Fire" onclick="{!c.fireEvent}"/>
+    <aura:registerEvent name="eve" type="c:Parent_cmpEvt"/>
+</aura:component>

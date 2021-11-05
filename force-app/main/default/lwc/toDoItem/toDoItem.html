@@ -1,0 +1,7 @@
+<template>
+    <div class="container">
+        <span class="slds-text-heading_label">{todoName}</span>
+        <lightning-button-icon-stateful icon-name="utility:check" title="Complete" onclick={updateHandler}></lightning-button-icon-stateful>
+        <lightning-button-icon-stateful icon-name="utility:delete" title="Delete" onclick={deleteHandler}></lightning-button-icon-stateful>
+    </div>
+</template>

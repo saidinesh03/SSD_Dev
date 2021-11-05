@@ -1,0 +1,10 @@
+<aura:component >
+    <c:Parent_cmp_Child/>
+    <c:Parent_cmp_Child2/>
+    <aura:attribute name="pname" type="string"/>
+    <aura:attribute name="fromEve" type="string"/>
+    {!v.pname}<br/>
+    {!v.fromEve}
+    
+    <aura:handler name="eve" event="c:Parent_cmpEvt" action="{!c.handleEvent}"/>
+</aura:component>

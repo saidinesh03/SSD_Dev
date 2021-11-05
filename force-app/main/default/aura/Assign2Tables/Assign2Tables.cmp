@@ -1,0 +1,29 @@
+<aura:component controller="ListController">
+
+    <aura:attribute name="contacts" type="SObject[]"/>
+    <aura:attribute name="accounts" type="SObject[]"/>
+    <!--<aura:handler name="init" value="{!this}" action="{!c.doInit}" />-->
+	<aura:handler event="c:Assign2event" action="{!c.searchKeyChange}"/>
+    <table class="slds-table slds-table--bordered slds-table--striped">
+        <thead>
+            <tr>
+                <th scope="col"><span class="slds-truncate">Contact Name</span></th>
+                <th scope="col"><span class="slds-truncate">Account Name</span></th>
+            </tr>
+        </thead>
+        <tbody>
+        <aura:iteration items="{!v.contacts}" var="contact">
+                    <td>{!contact.Name}<a onclick="">
+                    {!contact.Phone}
+                </a> 
+            </td>         
+        </aura:iteration>
+             <aura:iteration items="{!v.Accounts}" var="account">
+                    <td>{!account.Name}<a onclick="">
+                    {!account.Phone}
+                </a> 
+            </td>
+            </aura:iteration>
+        </tbody>
+    </table>
+</aura:component>

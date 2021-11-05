@@ -1,0 +1,21 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <lightning:input label="Enter Name" placeholder="Enter name" aura:id="sname" value="{!v.fName}"/>
+    <lightning:input label="Enter age" aura:id="sage" type="number" value="{!v.fage}"/>
+    <lightning:input label="Enter phone" aura:id="sphone" type="phone" value="{!v.fphone}"/>
+    
+    <aura:attribute name="fName" type="String"/>
+    <aura:attribute name="fage" type="Integer"/>
+    <aura:attribute name="fphone" type="Integer"/>
+    
+    <lightning:button onclick="{!c.print}" label="Submit"/><br/>
+    
+    <aura:attribute name="det" type="String"/>
+    {!v.det}<br/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.show}"/>
+    <aura:attribute name="sentence" type="String"/>
+    <lightning:card>
+        {!v.sentence}<br/>
+    </lightning:card>
+    
+</aura:component>

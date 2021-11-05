@@ -1,0 +1,10 @@
+<aura:component controller="AccSearchEventController">
+    <aura:handler event="c:Acc_Search_Event" action="{!c.displayOpp}"/>
+    <div name="box">
+    <lightning:dataTable data="{!v.Opp_info}" 
+                         columns="{!v.column_v}"
+                         keyField="Id"/>
+    </div>
+    <aura:attribute type="Object" name="Opp_info"/>
+    <aura:attribute type="List" name="column_v"/>
+</aura:component>

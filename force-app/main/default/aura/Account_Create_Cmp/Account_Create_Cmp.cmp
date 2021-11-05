@@ -1,0 +1,18 @@
+<aura:component controller="AccountExtension">
+    <lightning:input label="Enter Name" aura:id="AccName" type="text"/>
+    <Lightning:input label="Enter Phone" aura:id="AccPhone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/>
+    <Lightning:select label="Type" aura:id="AccType">
+		<option value="">choose Type...</option>
+        <option value="Prospect">Prospect</option>
+        <option value="Customer - Direct">Customer - Direct</option>
+        <option value="Customer - Channel">Customer - Channel</option>
+        <option value="Channel Partner / Reseller">Channel Partner / Reseller</option>
+        <option value="Installation Partner">Installation Partner</option>
+        <option value="Technology Partner">Technology Partner</option>
+        <option value="Other">Other</option>
+    </Lightning:select>
+    
+    <lightning:button label="Submit" onclick="{!c.getAccountas}" />
+    
+    <aura:registerEvent name="accEve" type="c:Accoun_Create_Evt"/>
+</aura:component>

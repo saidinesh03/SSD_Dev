@@ -1,0 +1,8 @@
+<apex:page controller="AllActionsController">
+<apex:form >
+<apex:inputText value="{!Textx}" accesskey="s" title="Enter Text here"/>
+<apex:actionSupport event="onkeyup" action="{!Yo}" status="ShowStatus"/>
+<apex:outputText value="{!Optext}" label="Texty" title="EgTitle">
+</apex:outputText>
+</apex:form>
+</apex:page>

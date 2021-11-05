@@ -1,0 +1,9 @@
+<apex:page >
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1><br/>
+  <h2>This is your new Page</h2><br/><font color = "blue">
+  <marquee><i>Start Learning Visualforce</i></marquee>
+  <b>Dattebayo!!!</b>
+  </font>
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

@@ -1,0 +1,17 @@
+.container {
+    background-color: white;
+    padding: 16px;
+    max-height: 480px;
+    display: block;
+    overflow-y: auto;
+}
+
+.greeting {
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.time {
+    font-size: auto;
+    font-weight: 600;
+}

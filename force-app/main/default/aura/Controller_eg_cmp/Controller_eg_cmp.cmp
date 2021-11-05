@@ -1,0 +1,11 @@
+<aura:component >
+    <aura:handler name="init" value="{!this}" action="{!c.Test}"/>
+    <aura:attribute name="anime" type="String"/>
+    <aura:attribute name="season" type="integer"/>
+    <aura:attribute name="seasoneps" type="integer"/>
+    <aura:attribute name="totaleps" type="integer"/>
+    Anime Name : {!v.anime}<br/>
+    Total Seasons: {!v.season}<br/>
+    Eps per Season: {!v.seasoneps} <br/>
+    Total Eps: {!v.totaleps}
+</aura:component>

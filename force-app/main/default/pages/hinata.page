@@ -1,0 +1,14 @@
+<apex:page StandardController="Account" extensions="AccountExtension">
+<apex:form >
+  <apex:pageBlock title="Hello {!$User.FirstName}!">
+
+  <apex:pageBlockbuttons location="top">
+  <apex:commandButton value="Edit" action="{!myEdit}"/>
+  <apex:commandButton value="Save" action="{!Save}"/>
+  </apex:pageBlockbuttons>
+    <apex:pageBlockSection collapsible="true" title="Student Details">
+<apex:outputField value="{!Account.Name}"/>
+</apex:pageBlockSection>
+ </apex:pageBlock>
+ </apex:form>
+ </apex:page>

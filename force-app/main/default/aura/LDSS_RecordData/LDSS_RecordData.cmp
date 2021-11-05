@@ -1,0 +1,28 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	 
+    <force:recordData aura:id="LDS_Form"
+                          recordId="{!v.recordId}"
+                          fields="FirstName, LastName, Phone"
+                      	  mode="VIEW"
+                          targetFields="{!v.rec}"
+                      targetError="{!v.error}"/>
+    <aura:attribute name="rec" type="Object"/>
+    <aura:attribute name="error" type="String"/>
+    <aura:attribute name="recordId" type="Id"/>
+    
+    <!--<lightning:card iconName="standard:account" title="{!v.rec.Name}">
+        <lightning:formattedPhone title="Phone" value="{!v.rec.Phone}" /><br/>
+        <lightning:formattedText title="Industry" value="{!v.rec.Industry}" /><br/>
+        <lightning:formattedText title="Type" value="{!v.rec.Type}" />
+    </lightning:card> -->
+    
+    <lightning:card iconName="standard:contact" title="New Contact">
+        <lightning:input Label ="First Name" title="First Name" value="{!v.rec.FirstName}" /><br/>
+        <lightning:input Label ="Last Name" title="Last Name" value="{!v.rec.LastName}" /><br/>
+        <lightning:input Label ="Phone" title="Phone" value="{!v.rec.Phone}" />
+        <aura:set attribute="actions">
+            <lightning:button label="Save" onclick="{!c.creatCon}"/>
+        </aura:set>
+    </lightning:card>
+    <aura:handler name="init" value="{!this}" action="{!c.creatCon}"/>
+</aura:component>

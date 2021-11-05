@@ -1,0 +1,26 @@
+<aura:component >
+    <aura:attribute name="inv" type="string"/>
+	<lightning:card title="Test" variant="Narrow" footer="Test footer">
+        <div>Lightning Card</div>
+    </lightning:card>
+    <div class="bb">
+    <lightning:card >  
+        <lightning:input name="hero" label="Enter Hero Name" type="text" aura:id="hero"/>
+        <lightning:input name="heroine" label="Enter Heroine Name" type="text" aura:id="heroine"/>
+        Main Protagonists are: <lightning:input name="bothname" label="Check names" type="text" aura:id="see"/>
+        <aura:set attribute="actions">
+            <!--<lightning:icon iconName="utility:down" size="small"/> -->
+            <lightning:button label="Submit" onclick="{!c.show}"/>
+            <lightning:button label="Read" onclick="{!c.read}"/>
+        </aura:set>
+        <aura:Set attribute="footer">
+            <lightning:button label="Clean" onclick="{!c.lear}"/> 
+        </aura:Set>
+        <aura:set attribute="title">
+          <h1>Anime</h1>
+        </aura:set>
+        <br/>
+        </lightning:card>
+         </div>
+    
+</aura:component>

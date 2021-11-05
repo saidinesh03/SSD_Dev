@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT" description="Event template">
+    <aura:attribute name="accId" type="ID"/>
+    <aura:attribute name="accPhone" type="String"/>
+</aura:event>

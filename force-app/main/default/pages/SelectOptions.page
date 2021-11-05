@@ -1,0 +1,24 @@
+<apex:page controller="componentslist">
+<apex:pageblock >
+<apex:form >
+<apex:pageBlockSection >
+<apex:inputcheckbox value="{!check}" label="Änime"/>
+<apex:selectCheckboxes value="{!checks}">
+<apex:selectOption itemvalue="Naruto" itemlabel="Naruto"></apex:selectoption>
+<apex:selectOption itemvalue="Hinata" itemlabel="Hinata"></apex:selectOption>
+<apex:selectOption itemvalue="Luffy" itemlabel="Luffy"> </apex:selectOption>
+</apex:selectCheckboxes>
+<apex:selectList value="{!picks}">
+<apex:selectOption itemvalue="Naruto" itemlabel="Naruto"></apex:selectoption>
+<apex:selectOption itemvalue="Hinata" itemlabel="Hinata"></apex:selectOption>
+<apex:selectOption itemvalue="Luffy" itemlabel="Luffy"> </apex:selectOption>
+<apex:selectOption itemvalue="Hancock" itemlabel="Hancock"></apex:selectOption>
+<apex:selectOption itemvalue="Zoro" itemlabel="Zoro"> </apex:selectOption>
+</apex:selectList>
+<apex:selectRadio value="{!radios}">
+<apex:selectOptions value="{!optionslist}"></apex:selectoptions>
+</apex:selectRadio>
+</apex:pageBlockSection>
+</apex:form>
+</apex:pageBlock>
+</apex:page>

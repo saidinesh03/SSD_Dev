@@ -1,0 +1,24 @@
+<aura:component >
+    <aura:attribute name="name" type="String" required="true"/> 
+    <aura:attribute name="branch" type="string"/>
+    <aura:attribute name="age" type="integer" required="true"/>
+    <aura:attribute name="city" type="String" required="true"/> 
+    <aura:attribute name="place" type="String"/>
+    <aura:attribute name="state" type="String" required="true"/>
+    
+    Name: {!v.name} <br/> <br/>
+    Branch: {!v.branch} <br/> <br/>
+    Age: {!v.age} <br/>
+    City : {!v.city} <br/>
+    Area : {!v.place} <br/>
+    State : {!v.state} <br/>
+    
+    <h1>Student Info:</h1><br/>
+    
+    <c:Stud_info_comp name="{!v.name}" age="{!v.age}"/>
+    <br/>
+    
+    <h1>Student Address</h1> <br/>
+    <c:Stud_Add_comp city="{!v.city}" place="{!v.place}" state="{!v.state}"/>
+    
+</aura:component>

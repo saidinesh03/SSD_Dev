@@ -1,0 +1,4 @@
+<aura:component >
+	<c:MessagesHelloo message="Kyō wa suteki ni miemasu"/>
+    <c:ExpenseOutput />
+</aura:component>

@@ -1,0 +1,47 @@
+<apex:page controller="ActionFnExample">
+<style type = "text/css">
+.pointer
+{
+ cursor : pointer ;
+ border : 1px solid #CCC ;
+ padding : 5px;
+}
+</style>
+<apex:form id="frm">
+<apex:outputPanel id="panel1">
+<apex:actionStatus id="mystatus" starttext="Loading......." stopText="Completed...."></apex:actionStatus>
+<br/>
+<b><apex:outputLabel value="{!val}"></apex:outputLabel></b>
+</apex:outputPanel>
+<br/>
+<br/>
+Enter First Value:
+<apex:inputText id="txt1"/> &nbsp;
+<br/>
+<br/>
+Enter Second Value :
+<apex:inputtext id="txt2"/> &nbsp;
+<br/>
+<br/>
+Enter Third Value :
+<apex:inputtext id="txt3"/> &nbsp;
+<br/>
+<br/>
+<span class="pointer" onclick = "method()">Click Here!!!!
+</span>
+<apex:actionFunction name="func" action="{!functioncal}" rerender="panel1" status="mystatus">
+<apex:param value="" name="thirdval"/>
+<apex:param value="43" name="firstval"/>
+<apex:param value="435" name="secondval"/>
+</apex:actionFunction>
+</apex:form>
+<script type="text/javascript">
+function method()
+{
+var txtval1 = document.getElementById("{!$Component.frm.txt1}").value;
+var txtval2 = document.getElementById("{!$Component.frm.txt2}").value;
+var txtval3 = document.getElementById("{!$Component.frm.txt3}").value;
+func(txtval1,txtval2);
+}
+</script>
+</apex:page>

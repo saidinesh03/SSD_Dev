@@ -1,0 +1,12 @@
+<apex:page controller="secondcustomcontroller">
+<apex:form >
+<apex:pageblock >
+<apex:pageblockSection >
+<apex:inputField value="{!a.name}"/>
+</apex:pageblockSection>
+<apex:pageblockButtons >
+<apex:commandButton value="save" action="{!save}"/>
+</apex:pageblockButtons>
+</apex:pageblock>
+</apex:form>
+</apex:page>

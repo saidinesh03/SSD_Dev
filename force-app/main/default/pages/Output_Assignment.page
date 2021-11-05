@@ -1,0 +1,20 @@
+<apex:page standardController="Student__c" recordSetVar="ST" tabStyle="Student__c">
+ <apex:pageBlock title="Hello {!$User.FirstName}!">
+ <apex:pageBlockSection collapsible="true" title="Student Details">
+ <apex:pageBlockTable title="Details" value="{!ST}" var="s" rules="all" width="80%">
+ <apex:column value="{!s.Name}"/>
+ <apex:column value="{!s.Contact_Number__c}"/>
+ <apex:column value="{!s.Email_ID__c}"/>
+ <apex:column value="{!s.Location__c}"/>
+ </apex:pageBlockTable>
+ </apex:pageBlockSection>
+  <br/><br/>
+ <apex:dataTable value="{!ST}" var="s">
+ <apex:column value="{!s.Name}"/>
+ <apex:column value="{!s.Contact_Number__c}"/>
+ <apex:column value="{!s.Email_ID__c}"/>
+ <apex:column value="{!s.Location__c}"/>
+ </apex:dataTable>
+ <br/><br/>
+ </apex:pageBlock>
+</apex:page>

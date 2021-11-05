@@ -1,0 +1,6 @@
+<aura:component >
+    <lightning:input label="Enter Hero name" aura:id="heroName" type="text"/>
+    <aura:handler name="eve" event="c:Parent_cmpEvt" action="{!c.handleEvent1}"/>
+    <aura:attribute name="fromEven" type="string"/>
+    {!v.fromEven}
+</aura:component>

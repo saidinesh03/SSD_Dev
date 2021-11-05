@@ -1,0 +1,19 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	<lightning:card title="Search your Car">
+    	<lightning:layout horizontalAlign="center">
+        	<lightning:layoutItem padding="around-small"> 
+                <lightning:select aura:id="CarType" name="type" label="Car Model">
+                  <option value=" " text="All types"/>
+                  <option value="Luxury" text="Luxury Model"/>
+                    <option value="Economy" text="Economy Model"/>
+                    <option value="Sports" text="Sports Model"/>
+                </lightning:select>  
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small">
+                <lightning:button label="Search" variant="brand"/>
+                <lightning:button label="New" variant="Neutral"/>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </lightning:card>
+    <!--<aura:handler name="{init}" value="{!this}" action="{!c.loadVals}"/>-->
+</aura:component>

@@ -1,0 +1,10 @@
+<apex:page standardController="Account" extensions="myext" tabStyle="Account">
+ <apex:form >
+  <apex:pageBlock title="Äccount Data Records">
+  <apex:pageBlockSection collapsible="true" title="Data is">
+  <apex:inputField value="{!Account.Name}"/>
+  </apex:pageBlockSection>
+  <apex:commandButton value="Submit" action="{!Save}"/>
+  </apex:pageBlock>
+  </apex:form>
+  </apex:page>

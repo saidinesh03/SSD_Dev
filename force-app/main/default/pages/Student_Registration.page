@@ -1,0 +1,14 @@
+<apex:page standardController="Student__c" sidebar="true" showHeader="true" tabStyle="Student__c" >
+  <apex:form >
+  <apex:pageBlock title="Student Register">
+  <apex:pageblockSection collapsible="true" title="Details">
+  <apex:inputField value="{!Student__c.Name}"/>
+  <apex:inputField value="{!Student__c.Email_ID__c}"/>
+  <apex:inputField value="{!Student__c.Contact_Number__c}"/>
+  <apex:inputField value="{!Student__c.Date_of_Birth__c}"/>
+  <apex:inputField value="{!Student__c.Location__c}"/>
+  <apex:commandButton value="Submit" action="{!Save}"/>
+  </apex:pageblockSection>
+   </apex:pageBlock>
+  </apex:form>
+</apex:page>

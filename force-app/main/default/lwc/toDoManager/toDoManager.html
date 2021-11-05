@@ -1,0 +1,39 @@
+<template>
+<lightning-card title="To Do" class="container">
+<lightning-layout class="slds-align_absolute-center slds-text-align_center container" multiple-rows="true">
+        <lightning-layout-item size="12">
+            <div class="time">{time}</div>
+        </lightning-layout-item>
+        <lightning-layout-item size="12">
+            <div class="greeting">{greeting}</div>
+        </lightning-layout-item>
+        <lightning-layout-item size="12">
+            <div class="slds-text-heading_large slds-m-vertical_large">What is your main focus for today?</div>
+        </lightning-layout-item>
+</lightning-layout>
+<lightning-layout class="slds-align_absolute-center slds-text-align_center" multiple-rows="true">
+    <lightning-layout-item size="10" large-device-size="6" medium-device-size="8" flexibility="auto">
+        <lightning-input type="text" placeholder="What's on your mind" variant="label-hidden"></lightning-input>
+    </lightning-layout-item>
+    <lightning-layout-item size="2">
+        <lightning-button-icon icon-name="utility:add" title="Add ToDo" onclick={toDoHandler}></lightning-button-icon>
+    </lightning-layout-item>
+</lightning-layout>
+<lightning-layout class="slds-align_absolute-center slds-text-align_center" multiple-rows="true">
+    <div>
+        <p class="slds-text-heading_label">UPCOMING</p>
+        <template for:each={upcomingTasks} for:item="todo">
+                <c-to-do-item key={todo.todoId} todo-id={todo.todoId} todo-name={todo.todoName}></c-to-do-item>
+        </template>
+    </div>
+</lightning-layout>
+<lightning-layout class="slds-align_absolute-center slds-text-align_center" multiple-rows="true">
+    <div>
+        <p class="slds-text-heading_label">COMPLETED</p>
+        <template for:each={completedTasks} for:item="todo">
+            <c-to-do-item key={todo.todoId} todo-id={todo.todoId} todo-name={todo.todoName} done></c-to-do-item>
+        </template>
+    </div>
+</lightning-layout>
+</lightning-card>
+</template>

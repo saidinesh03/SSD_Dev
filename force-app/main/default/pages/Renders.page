@@ -1,0 +1,22 @@
+<apex:page controller="RenderedControllr">
+ <!-- Rendered  Demo -->
+ <apex:form >
+   <apex:pageBlock >
+    <apex:commandButton value="ShowBtmPgBlck" action="{!ShowBlockMethod}" rerender="pgblckID"/>
+   </apex:pageBlock>
+    
+   <apex:pageBlock id="pgblk1">
+    Account Name  :<apex:outputField value="{!acc.name}"/>
+<br/>
+    Account Number :<apex:outputField value="{!acc.accountnumber}"/>
+   </apex:pageBlock>
+   
+   <apex:pageBlock id="pgblckID">
+               <b>  Output Text   : </b>   <apex:outputText value="{!OutPutString}"/>
+           </apex:pageBlock>
+ <c:Login_Component ></c:Login_Component>
+ </apex:form>
+<apex:includeLightning />
+$Lightning.use("c:KonnichiwaInteractive", function() {});
+
+</apex:page>

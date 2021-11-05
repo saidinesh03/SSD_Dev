@@ -1,0 +1,13 @@
+<apex:page standardController="Account" recordSetVar="acc" tabStyle="Account">
+ <apex:pageBlock title="Hello {!$User.FirstName}!">
+ <apex:pageBlockSection collapsible="true" title="Account Details">
+ <apex:pageBlockTable title="Details" value="{!acc}" var="s">
+ <apex:column value="{!s.Name}"/>
+ <apex:column headerValue=" Account Link">
+ <apex:outputlink value="/apex/hinata?id={!s.id}" target="_blank">{!s.Name}
+ </apex:outputlink>
+ </apex:column>
+ </apex:pageBlockTable>
+ </apex:pageBlockSection>
+ </apex:pageBlock>
+</apex:page>

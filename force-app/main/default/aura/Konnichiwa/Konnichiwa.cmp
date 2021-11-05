@@ -1,0 +1,12 @@
+<aura:component >
+    <c:YoroshikuHeading />
+	<p>Lightning-san, Yoroshiku Onegaishimasu!!!!</p>
+    <aura:attribute name="compp" type="String" default="yo"/>
+    {!$label.c.name1} : {!v.compp} <br/>
+    <aura:attribute name="male_prot" type="String[]"/>
+    <aura:attribute name="female_prot" type="string[]"/>
+    
+    Male Protagonist: {!v.male_prot} <br/>
+    Female Protagonist: {!v.female_prot} <br/>
+    <c:Comp1 comp="Comp with things" status="nice"/>
+</aura:component>

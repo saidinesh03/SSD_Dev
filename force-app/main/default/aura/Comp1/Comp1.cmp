@@ -1,0 +1,11 @@
+<aura:component access="global" >
+    <h1>First Lightning Component<br/>
+        Trying to build a simple component and invoke the same<br/>
+        Lets Preview.........</h1>
+    <aura:attribute Name="comp" type="String"/>
+    <aura:attribute Name="status" type="String" default="running"/>
+    <br/>
+    Comp Name: {!v.comp} <br/>
+    Comp Staus: {! v.status} <br/>
+    <img src="https://ssdneshtm-dev-ed.my.salesforce.com/0690I00000FL3Hq" alt="Luffy"/>
+</aura:component>
