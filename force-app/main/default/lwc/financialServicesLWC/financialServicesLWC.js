@@ -1,45 +1,44 @@
 import { LightningElement, wire, track } from 'lwc';
 import accList from '@salesforce/apex/FinancialServicesController.accList';
+import { updateRecord } from 'lightning/uiRecordApi';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { refreshApex } from '@salesforce/apex';
 
 export default class FinancialServicesLWC extends LightningElement {
 
-    AccList;
-    sortedBy;
-    direction;
+    @track AccList;
+    direction = "asc";
     sortby;
     def = "asc";
-    @track draftValues;
-
-    @track AccList;
+    @track draftVal = [];
     
-    /*@wire(getAccs)
-    wireddata({ error, data }){
+    /*wireddata({ data, error }){
         if (data) 
         {
-	        this.data =  data.map(
-	        record => Object.assign(
-		        { "Owner.Name" : record.Owner.Name},
-		        record
-	            )
-		    );
+	        this.AccList = data;
+            this.error = undefined;
+            console.log(data);
 		}
         else if (error) {
 		    this.error = error;
-		    this.data = undefined;
+		    this.AccList = undefined;
 	    }
     }*/
-    
-    connectedCallback(){
+
+    /*connectedCallback(){
         this.getAccs();
-    }
-    columns= [
-        { label: 'Account Name', fieldName: 'Name', editable: true, sortable: true },
-        { label: 'Account Owner', fieldName: 'OwnerId', sortable: true, editable: true },
-        { label: 'Phone', fieldName: 'Phone', editable: true },
-        { label: 'Website', fieldName: 'Website', editable: true },
-        { label: 'Annual Revenuee', fieldName: 'AnnualRevenue', editable: true  }];
-     
-    getAccs(){
+    }*/
+
+    @wire(accList)
+    wiredAccs(data) {
+        this.AccList = data;
+        if (data.error) {
+            console.log("Error");
+            this.AccList = undefined;
+        }
+    }; 
+
+    /*getAccs(){
         accList()
         .then( result => { 
             this.AccList = result;
@@ -48,10 +47,19 @@ export default class FinancialServicesLWC extends LightningElement {
         .catch(error => {
             console.log("Error is" + error);
         })
-    }
+    }*/
     
-    sortBy( sort, reverse, con ){
-        const key = con ? (x) => con( x[sort]) : (x) => x[sort];
+        columns= [
+        { label: 'Account Name', fieldName: 'Name', editable: true, sortable: true },
+        { label: 'Account Owner', fieldName: 'Owner.Name', sortable: true, editable: true },
+        { label: 'Phone', fieldName: 'Phone', editable: true },
+        { label: 'Website', fieldName: 'Website', editable: true },
+        { label: 'Annual Revenuee', fieldName: 'AnnualRevenue', editable: true  }];
+     
+
+    
+    sortBy( sort, reverse, primer ){
+        const key = primer ? (x) => primer( x[sort]) : (x) => x[sort];
 
         return function (a, b) {
             a = key(a);
@@ -63,11 +71,47 @@ export default class FinancialServicesLWC extends LightningElement {
     sortHandler(event){
 
         const { fieldName: sortby, direction } = event.detail;
-        const sortedData = [...this.data];
+        const sortedData = [...this.AccList];
 
         sortedData.sort( this.sortBy(sortby, direction = "asc" ? 1 : -1));
-        this.data = sortedData;
+        this.AccList = sortedData;
         this.direction = direction;
         this.sortby = sortby;
+    }
+
+    handleSave(event) {
+        console.log("inside handleSave");
+        this.draftVal = event.detail.draftValues;
+        const recordInputs = this.draftVal.slice().map(draft => {
+            const field = Object.assign({}, draft);
+            return { field };
+        });
+        const promises = recordInputs.map(recordInput => {return updateRecord(recordInput)});
+        Promise.all(promises)
+            .then(res => {
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Success',
+                    message: 'Records Updated',
+                    variant: 'success'
+                })
+            );
+            this.draftVal = [];
+            return this.refresh();
+        }).catch(error => {
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error',
+                    message:  'Record Save Failed',
+                    variant: 'error'
+                })
+            );
+        }).finally(() => {
+            this.draftVal = [];
+        });
+    }
+
+    async refresh() {
+        await refreshApex(this.AccList);
     }
 }
