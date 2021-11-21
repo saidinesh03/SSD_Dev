@@ -1,6 +1,6 @@
 <template>
-    <lightning-card title="Search Car" icon-name="car">
-        <lightning-layout multiple-rows="true" class="search">
+    <lightning-card title="Search Car" icon-name="custom:custom31">
+        <lightning-layout class="search">
             <lightning-layout-item class="slds-m-around_small" size="10">
                 <lightning-combobox name="type" label="Select Type" value={CarType} options={carTypes} onchange={searchCars}></lightning-combobox>
             </lightning-layout-item>
@@ -8,38 +8,10 @@
             <template if:true={CarsList}>
                 <lightning-card title="Cars" class="cars" icon-name="custom:custom31">
                 <lightning-layout  class="slds-m-around_small" multiple-rows="true">
-                    <lightning-datatable data={CarsList} key-field="Id" columns={columns} draft-values={draftValues} class="table">
+                    <lightning-datatable data={CarsList} key-field="Id" columns={columns} draft-values={draftValues} onrowselection={showDetails} class="table">
                     </lightning-datatable>
                 </lightning-layout>
                 </lightning-card>
-                <!--<lightning-layout  class="slds-m-around_small cars" multiple-rows="true">
-                <template for:each={CarsList} for:item="car">
-                    <lightning-layout-item key={car.id} size="1" class="cell">
-                        <lightning-input type="checkbox"></lightning-input>
-                    </lightning-layout-item>     
-                    <lightning-layout-item key={car.id} size="1"  class="cell">
-                        {car.Car_Make__c}-{car.Car_Model__c}
-                    </lightning-layout-item>
-                    <lightning-layout-item key={car.id} size="1" class="cell">
-                        {car.Car_Type__c}
-                    </lightning-layout-item>
-                    <lightning-layout-item key={car.id} size="1" class="cell">
-                        {car.Car_Trim__c}
-                    </lightning-layout-item>
-                    <lightning-layout-item key={car.id} size="1" class="cell">
-                        {car.Capacity__c}
-                    </lightning-layout-item>
-                    <lightning-layout-item key={car.id} size="1" class="cell">
-                        {car.Fuel_100_KM__c}
-                    </lightning-layout-item>
-                    <lightning-layout-item key={car.id} size="1" class="cell">
-                        {car.Year__c}
-                    </lightning-layout-item>
-                    <lightning-layout-item key={car.id} size="1" class="cell">
-                        {car.Color__c}<br/>
-                    </lightning-layout-item>
-                    </template>
-                </lightning-layout>-->
             </template>
     </lightning-card>
 </template>

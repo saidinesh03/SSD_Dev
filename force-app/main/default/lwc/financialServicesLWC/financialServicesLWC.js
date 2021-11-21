@@ -31,6 +31,10 @@ export default class FinancialServicesLWC extends LightningElement {
 
     @wire(accList)
     wiredAccs(data) {
+        data.forEach( AccRec => {
+            if(AccRec.OwnerId)
+            AccRec.OwnerName = AccRec.Owner.Name;
+        });
         this.AccList = data;
         if (data.error) {
             console.log("Error");
@@ -51,7 +55,7 @@ export default class FinancialServicesLWC extends LightningElement {
     
         columns= [
         { label: 'Account Name', fieldName: 'Name', editable: true, sortable: true },
-        { label: 'Account Owner', fieldName: 'Owner.Name', sortable: true, editable: true },
+        { label: 'Account Owner', fieldName: 'OwnerName', sortable: true, editable: true },
         { label: 'Phone', fieldName: 'Phone', editable: true },
         { label: 'Website', fieldName: 'Website', editable: true },
         { label: 'Annual Revenuee', fieldName: 'AnnualRevenue', editable: true  }];
